@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- image reference with the model -->
+    <div class="image">
+        <img src="https://static.turbosquid.com/Preview/2020/05/05__19_47_32/1.pngDF03BDDB-4F96-4F4F-8763-3FAE119499D4Large.jpg" alt="nokia 3310">
+    </div>
+    <!-- the phone's model price and also quantity -->
+    <div class="phone-type">
+        <div class="phone-model">
+            <label for="nokia-3310">Model: Nokia 3310 &#x24;119.95</label>
+            <input type="checkbox" id="nokia-3310-price" value="119.95" name="nokia-3310" checked>
+        </div>
+        <div class="phone-quantity">
+            <label for="nokia">Quantity: 30 Phones</label>
+            <input type="radio" id="nokia-3310-quantity" value="30" name="nokia-3310" checked>
+        </div>
+    </div>
+    <!-- on button function click to calculate full amount with tax -->
+    <div class="phones">
+        <div class="calc">
+            <button onclick="myFunctionCalcTotal()">Calculate</button>
+            <p>The full price is:</p>
+            <p id="full-price">	&#36;0</p>
+            <p>and includes 5&#37; tax rate.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
