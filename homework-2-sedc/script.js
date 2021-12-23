@@ -1,20 +1,21 @@
-//functin for calculatin your chinese zodiac sign  
+//function for calculating your chinese zodiac sign  
 function getChineseZodiac(){
     //asking the user fot their year and tranforming it into a integer 
     var year = prompt("What year were you born in?");
     var yearInput = parseInt (year);
     //formula for calculating your chinese zodiac sign
-    var resCalc = (yearInput - 4) % 12;
+    const resCalc = (yearInput - 4) % 12;
     //find HTML element by ID and assign it to the variable 
-    var chineseZodiac;
+    let chineseZodiac;
     var zodiacResult = document.getElementById("zodiac");
     var image = document.getElementById("chinese-zodiac-image"); 
-    var zodiacDesc;
+    let zodiacDesc;
     var descResult = document.getElementById("desc");
-    //if user presses cancel
-    if (year === null){
-        alert("Cancel")
-    }
+    // if user presses cancel or the input is invalid
+    if (year === null || (isNaN(yearInput))){
+        alert("Invalid input")
+        return false
+    } 
     //switch function for displaying result
     switch (resCalc){
         case 0:
