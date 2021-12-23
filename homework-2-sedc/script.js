@@ -14,7 +14,7 @@ function getChineseZodiac(){
     // if user presses cancel or the input is invalid
     if (year === null || (isNaN(yearInput))){
         alert("Invalid input")
-        return false
+        return 
     } 
     //switch function for displaying result
     switch (resCalc){
