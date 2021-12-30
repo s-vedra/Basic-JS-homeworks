@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Chinese Zodiac</title>
+</head>
+<!-- HTML document styled with Tailwind CSS -->
+<body class="bg-orange-200">
+    <!-- Heading -->
+    <header>
+    <h1 class="text-lg flex flex-wrap justify-center font-bold 2xl:text-4xl">Calculate Your Chinese Zodiac</h1>
+    </header>
+    <!-- Section -->
+    <section class="flex justify-center">
+        <!-- A div container -->
+        <div class="mt-20 flex flex-wrap flex-col justify-center items-center gap-10">
+            <!-- The displayed result for the zodiac calculation -->
+            <p id="zodiac" class="text-md text-orange-600 italic font-semibold 2xl:text-2xl"></p>
+            <!-- Another div container for the image and description for the zodiac -->
+        <div class="flex flex-wrap items-center gap-10 justify-center">
+            <img id="chinese-zodiac-image" class="w-96 rounded-full drop-shadow-2xl 2xl:w-96 h-96" src="https://images.saymedia-content.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cq_auto:eco%2Cw_1200/MTc0MjA0NjQ1ODE0NTc2NjM2/chinese-astrology-determining-your-month-day-and-hour-animal.png" alt="chinese-zodiac-image">
+            <p id="desc" class="mx-1 text-sm 2xl:w-80 2xl:text-2xl">Learn more about your Chinese Zodiac</p>
+        </div>
+        <!-- On click button function to call the js function -->
+            <button class="cursor-pointer bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded-full transition-colors hover:text-neutral-900 hover:shadow-lg" onclick="getChineseZodiac()">Calculate</button>
+        </div>    
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
