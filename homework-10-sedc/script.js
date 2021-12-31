@@ -1,6 +1,8 @@
+//arrays with first and last names
 let firstName = ["Bob", "John", "Hugo", "Bruno"];
 let lastName = ["Dylan", "Mayer", "Boss", "Mars"];
 
+//function to concatenate elements from different arrays
 function fullName(name, surname) {
   let result = [];
   let number = 1;
@@ -11,4 +13,5 @@ function fullName(name, surname) {
   return result;
 }
 
+//call the function
 console.log(fullName(firstName, lastName));
