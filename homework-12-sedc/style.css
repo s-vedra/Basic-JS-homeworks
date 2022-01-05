@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  background-color: #90d7ff;
+}
+
+.aDiv {
+  margin-top: 100px;
+}
