@@ -28,9 +28,11 @@ function addIngridients(array) {
 function printIngridients(array, element) {
   let list = "<h3>Ingridient list:</h3>";
   list += `<table>`;
+  let position = 0;
   for (i = 0; i < array.length; i++) {
+    position++;
     list += "<tr>";
-    list += `<td class="table">${array[i]}</td>`;
+    list += `<td class="table">${position}. ${array[i]}</td>`;
     list += "</tr>";
   }
   list += "</table>";
