@@ -1,20 +1,11 @@
-//what do we want to find the type of
-let userInput = prompt("Enter value");
-
 //function to find the value's type
-function findType(type) {
-  if (type == "null") {
-    return typeof null;
-  } else if (type == "string") {
-    return typeof "";
-  } else if (type == "true" || type == "false") {
-    return typeof true;
-  } else if (type == "") {
-    return typeof undefined;
-  } else if (type == "NaN") {
-    return typeof NaN;
-  }
+function findType(input) {
+  return typeof input;
 }
 
-//calling the function
-console.log(findType(userInput));
+//calling the function and input
+console.log(findType(null));
+console.log(findType(undefined));
+console.log(findType("string"));
+console.log(findType(true));
+console.log(findType(5));
