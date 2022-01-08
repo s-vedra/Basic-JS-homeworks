@@ -1,5 +1,5 @@
 //empty string
-let stringArray = [];
+const stringArray = [];
 
 //n is the number of strings you want to add in the empty array
 let n = parseInt(prompt("How many strings do you want in the array?"));
@@ -18,10 +18,7 @@ if (isNaN(n)) {
 
 //function to join all the elements into one big string
 function concatString(array) {
-  for (i = 0; i < array.length; i++) {
-    bigString = array.join(" ");
-  }
-  return bigString;
+  return array.join(" ");
 }
 
 //call the function
