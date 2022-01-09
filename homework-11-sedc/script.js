@@ -2,7 +2,7 @@
 let numbers = [];
 let n = parseInt(prompt("How many numbers do you want in the array?"));
 if (isNaN(n)) {
-  alert("I said numbers");
+  alert("Invalid input");
 }
 //pushes the amount of n numbers you typed in the prompt and also add some hardcoded strings
 for (i = 0; i < n; i++) {
