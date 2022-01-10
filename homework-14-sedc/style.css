@@ -6,12 +6,14 @@ body {
 }
 .table {
   background-color: #d2d7df;
-  width: 100vh;
+  width: 50vh;
   height: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
   transition-duration: 0.4s;
+  padding: 10px 15px;
+  border-radius: 10px;
 }
 
 .table:hover {
@@ -51,4 +53,26 @@ button {
 button:hover {
   background-color: #d2d7df;
   color: #707078;
+}
+
+#text {
+  font-size: 20px;
+}
+
+input[type="number"] {
+  width: 25px;
+}
+
+#myDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: start;
+}
+div.containerTwo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
