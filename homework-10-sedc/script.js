@@ -6,11 +6,16 @@ let lastName = ["Dylan", "Mayer", "Boss", "Mars"];
 function fullName(name, surname) {
   let result = [];
   let number = 1;
-  for (i = 0; i < name.length; i++) {
-    result.push(number + ". " + name[i].concat(" ", surname[i]));
-    number++;
+  if (firstName.length != lastName.length) {
+    alert("The lengths don't match");
+    return [];
+  } else {
+    for (i = 0; i < name.length; i++) {
+      result.push(number + ". " + name[i].concat(" ", surname[i]));
+      number++;
+    }
+    return result;
   }
-  return result;
 }
 
 //call the function
