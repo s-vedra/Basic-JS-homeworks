@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+div.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: larger;
+}
+#button {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 12px;
+  margin: 10px 0;
+  background: #27afd8;
+  color: white;
+  cursor: pointer;
+}
+#table {
+  max-width: 10vh;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: medium;
+}
+
+tr {
+  background: #27afd8;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid whitesmoke;
+}
+td {
+  background: #4a9eb8;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid white;
+}
+table {
+  width: 100%;
+  color: white;
+  background-color: black;
+}
