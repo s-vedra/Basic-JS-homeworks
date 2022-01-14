@@ -10,7 +10,7 @@ div.container {
   gap: 10px;
   font-size: larger;
 }
-#button {
+button {
   border: none;
   border-radius: 10px;
   padding: 5px 12px;
@@ -19,20 +19,23 @@ div.container {
   color: white;
   cursor: pointer;
 }
+div.button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
 #table {
   max-width: 10vh;
   padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: medium;
 }
 
 tr {
   background: #27afd8;
   padding: 20px;
-  display: flex;
-  align-items: center;
   border: 1px solid whitesmoke;
 }
 td {
@@ -40,9 +43,10 @@ td {
   text-align: center;
   padding: 20px;
   border: 1px solid white;
+  font-size: 1rem;
 }
 table {
-  width: 100%;
+  width: 65vh;
   color: white;
-  background-color: black;
+  border: 2px solid black;
 }
