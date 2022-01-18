@@ -11,23 +11,34 @@ function yourAnimal() {
     name: animalName.value,
     kind: animalKind.value,
   };
-  animal.animalSpeak = animalSpeak;
-  animal.animalSpeak(text);
+  if (animal.name.length < 1 || animal.kind.length < 1) {
+    alert("Write something");
+    return;
+  } else {
+    animal.animalSpeak = animalSpeak;
+    animal.animalSpeak(text);
+  }
 }
 
 //the method function for the object
 function animalSpeak(element) {
   this.message = animalMessage.value;
-  animalName.value = "";
-  animalKind.value = "";
-  animalMessage.value = "";
-  let paragraph = document.createElement("p");
-  let paragraphText = document.createTextNode(
-    `The ${this.kind} said "${this.message}". It's name is ${this.name}`
-  );
-  paragraph.appendChild(paragraphText);
-  element.appendChild(paragraph);
-  console.log(paragraphText);
+
+  if (this.message.length < 1) {
+    alert("Input something in the message");
+    return;
+  } else {
+    animalName.value = "";
+    animalKind.value = "";
+    animalMessage.value = "";
+    let paragraph = document.createElement("p");
+    let paragraphText = document.createTextNode(
+      `The ${this.kind} said "${this.message}". It's name is ${this.name}`
+    );
+    paragraph.appendChild(paragraphText);
+    element.appendChild(paragraph);
+    console.log(paragraphText);
+  }
 }
 
 //button to call the function
