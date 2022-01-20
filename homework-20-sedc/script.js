@@ -13,7 +13,7 @@ function displayName(input) {
   } else {
     input.css("borderBottom", `2px solid ${input[1].value}`);
     myButton.css("backgroundColor", input[1].value);
-    $("h1").text(`${input[0].value}`).css("color", input[1].value);
+    $("h1").append(`${input[0].value} \n`).css("color", input[1].value);
   }
   input[0].value = "";
   input[1].value = "";
