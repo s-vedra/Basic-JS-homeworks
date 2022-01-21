@@ -11,18 +11,18 @@ function displayBooks() {
   //array of objects
   let books = [
     //read books
-    (a = {
+    {
       title: "The Robots of dawn",
       author: "Isaac Asimov",
-    }),
+      readingStatus: true,
+    },
     //not read books
-    (b = {
+    {
       title: "Mockingjay: The Final Book of The Hunger Games",
       author: "Suzanne Collins",
-    }),
+      readingStatus: false,
+    },
   ];
-  a.readingStatus = true;
-  b.readingStatus = false;
   validateProgress(books, read, notRead);
   console.log(books);
 }
@@ -54,71 +54,42 @@ displayBooks();
 //bonus task
 //empty array
 const library = [];
-//function with an object with the read books
-function readBooks(array) {
-  books = {
-    title: title.value,
-    author: author.value,
-  };
-  //validation for the inputs
-  if (books.title.length <= 1 || books.author.length <= 1) {
+
+//function to validate input, create an object and push it into the empty array
+function books(ul, title, author, readingStatus) {
+  if (title.length <= 1 || author.length <= 1) {
     alert("Wrong input");
   } else {
-    array.push(books);
-    //add the reading status
-    books.firstAnswer = firstAnswer;
-    books.firstAnswer(read);
+    library.push({
+      title: title,
+      author: author,
+      readingStatus: readingStatus,
+    });
+    let li = document.createElement("li");
+    if (readingStatus) {
+      textElement = document.createTextNode(
+        `Already read ${title} by ${author}`
+      );
+    } else {
+      textElement = document.createTextNode(
+        `You still need to read ${title} by ${author}`
+      );
+    }
+    li.appendChild(textElement);
+    ul.appendChild(li);
+    console.log(library);
   }
-  console.log(array);
-  return [];
-}
-
-//function with an object with the unread books
-function notReadBooks(array) {
-  books = {
-    title: title.value,
-    author: author.value,
-  };
-  //validation for the inputs
-  if (books.title.length <= 1 || books.author.length <= 1) {
-    alert("Wrong input");
-  } else {
-    array.push(books);
-    //add the reading status
-    books.secondAnswer = secondAnswer;
-    books.secondAnswer(notRead);
-  }
-  console.log(array);
-  return [];
-}
-
-//function to add a property to the object and display the input in an unordered list
-function firstAnswer(ul) {
-  this.readingStatus = true;
-  let lists = document.createElement("li");
-  let textList = document.createTextNode(
-    `Already read ${this.title} by ${this.author}`
-  );
-  lists.appendChild(textList);
-  ul.appendChild(lists);
-}
-
-//function to add a property to the object and display the input in an unordered list
-function secondAnswer(ul) {
-  this.readingStatus = false;
-  let lists = document.createElement("li");
-  let textList = document.createTextNode(
-    `You still need to read ${this.title} by ${this.author}`
-  );
-  lists.appendChild(textList);
-  ul.appendChild(lists);
 }
 
 //button to call the function
 yesButton.addEventListener("click", function () {
-  readBooks(library);
+  books(read, title.value, author.value, true);
+  title.value = "";
+  author.value = "";
 });
 //button to call the function
 noButton.addEventListener("click", function () {
-  notReadBooks(library);
+  books(notRead, title.value, author.value, false);
+  title.value = "";
+  author.value = "";
 });
