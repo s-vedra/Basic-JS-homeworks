@@ -18,9 +18,6 @@ function validateValue() {
   }
 }
 
-//position for the rows
-let position = 1;
-
 //function to create the table
 function createTable(element) {
   let table = document.createElement("table");
@@ -29,11 +26,11 @@ function createTable(element) {
   for (let i = 0; i < rows.value; i++) {
     let tableRow = document.createElement("tr");
     //create table columns from the value of the input
-    for (let i = 0; i < columns.value; i++) {
+    for (let j = 0; j < columns.value; j++) {
       let tableColumn = document.createElement("td");
       //create text for the columns
       let textColumn = document.createTextNode(
-        `Row-${position} \n Column-${i + 1}`
+        `Row-${i + 1} \n Column-${j + 1}`
       );
       //add the text to the column
       tableColumn.appendChild(textColumn);
@@ -42,7 +39,6 @@ function createTable(element) {
     }
     //add the created row with column to the table
     table.appendChild(tableRow);
-    position++;
   }
 }
 
