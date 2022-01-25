@@ -1,4 +1,4 @@
-input[type="checkbox"]:checked + span {
+input[type="checkbox"]:checked + li {
   text-decoration: line-through;
 }
 
@@ -9,6 +9,9 @@ h1 {
 ul {
   font-size: larger;
   list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
 }
 div.container {
   display: flex;

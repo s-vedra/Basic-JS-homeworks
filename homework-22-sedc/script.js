@@ -23,16 +23,13 @@ let unorderedList = (element, name) => {
   } else {
     let li = document.createElement("li");
     let text = document.createTextNode(`${name}`);
-    let span = document.createElement("span");
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = "checkBox";
-    li.appendChild(checkbox);
-    span.appendChild(text);
-    li.appendChild(span);
-
+    element.appendChild(checkbox);
+    li.appendChild(text);
     //button to call the function to create the object with its properties
-    checkbox.addEventListener("click", function () {
+    checkbox.addEventListener("change", function () {
       createObject(name, true, toDoList);
     });
 
