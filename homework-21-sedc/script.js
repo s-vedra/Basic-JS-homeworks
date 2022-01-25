@@ -12,6 +12,16 @@ let editButton = document.getElementsByClassName("editBtn");
 let phoneBook = [];
 //function to create the objects
 let createObject = (name, lastName, number, array) => {
+  contact = {
+    name: name,
+    lastName: lastName,
+    number: number,
+  };
+  array.push(contact);
+};
+
+//function to create the rows with data cells
+let addCells = (table, name, lastName, number, array) => {
   if (
     name.length < 2 ||
     lastName.length < 2 ||
@@ -20,35 +30,25 @@ let createObject = (name, lastName, number, array) => {
   ) {
     alert("Wrong input");
   } else {
-    contact = {
-      name: name,
-      lastName: lastName,
-      number: number,
-    };
-    array.push(contact);
-    addCells(myTable, name, lastName, number, phoneBook);
+    createObject(name, lastName, number, array);
+    //create new table row with data cells
+    let newRow = table.insertRow(table.length);
+    let cellOne = newRow.insertCell(0);
+    let cellTwo = newRow.insertCell(1);
+    let cellThree = newRow.insertCell(2);
+    let cellFour = newRow.insertCell(3);
+
+    //add the inputs to the data cells and also buttons for every data cell
+    cellOne.innerHTML = name;
+    cellTwo.innerHTML = lastName;
+    cellThree.innerHTML = number;
+    cellFour.innerHTML = `<button class="editBtn">Edit</button>`;
+    cellFour.innerHTML += `<button class="deleteBtn">Delete</button>`;
+    //calling the button function
+    buttons(deleteButton, editButton, phoneBook, saveButton);
+
+    console.log(array);
   }
-};
-
-//function to create the rows with data cells
-let addCells = (table, name, lastName, number, array) => {
-  //create new table row with data cells
-  let newRow = table.insertRow(1);
-  let cellOne = newRow.insertCell(0);
-  let cellTwo = newRow.insertCell(1);
-  let cellThree = newRow.insertCell(2);
-  let cellFour = newRow.insertCell(3);
-
-  //add the inputs to the data cells and also buttons for every data cell
-  cellOne.innerHTML = name;
-  cellTwo.innerHTML = lastName;
-  cellThree.innerHTML = number;
-  cellFour.innerHTML = `<button class="editBtn">Edit</button>`;
-  cellFour.innerHTML += `<button class="deleteBtn">Delete</button>`;
-  //calling the button function
-  buttons(deleteButton, editButton, phoneBook, saveButton);
-
-  console.log(array);
 };
 
 //global variable, given a value later in the edit and save buttons
@@ -82,12 +82,21 @@ let buttons = (btnOne, btnTwo, array, btnThree) => {
     selectedRow.cells[0].innerHTML = userInputFirstName.value;
     selectedRow.cells[1].innerHTML = userInputLastName.value;
     selectedRow.cells[2].innerHTML = userInputNumber.value;
+    //second problem, it creates multiple objects instead of just one in the array
+    createObject(
+      userInputFirstName.value,
+      userInputLastName.value,
+      userInputNumber.value,
+      phoneBook
+    );
+    console.log(phoneBook);
   });
 };
 
 //add button to call the function
 addButton.addEventListener("click", function () {
-  createObject(
+  addCells(
+    myTable,
     userInputFirstName.value,
     userInputLastName.value,
     userInputNumber.value,
