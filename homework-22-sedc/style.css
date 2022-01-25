@@ -1,0 +1,22 @@
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+ul {
+  font-size: larger;
+  list-style-type: none;
+}
+div.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+div.containerText {
+  display: flex;
+  flex-direction: column;
+}
