@@ -14,8 +14,6 @@ let createToDo = (name, checkbox, array) => {
   };
   array.push(toDoObject);
   console.log(array);
-  getTheIndex = array.indexOf(toDoObject);
-  console.log(getTheIndex);
 };
 
 //function to create the unordered list
@@ -23,7 +21,6 @@ let createList = (element, name) => {
   if (name.length < 2) {
     alert("Wrong input");
   } else {
-    createToDo(name, false, toDoList);
     let li = document.createElement("li");
     let text = document.createTextNode(`${name}`);
     let span = document.createElement("span");
