@@ -10,18 +10,44 @@ let editButton = document.getElementsByClassName("editBtn");
 
 //emtpy array to store the objects
 let phoneBook = [];
-//function to create the objects
-let createObject = (name, lastName, number, array) => {
+
+//we use this variable to get the index later and edit it or delete it
+let editingIndex = null;
+
+//function to create the contacts
+let createContact = (name, lastName, number, array) => {
   contact = {
     name: name,
     lastName: lastName,
     number: number,
   };
   array.push(contact);
+  return contact;
+};
+
+//function to populate the inputs and get the index of the contact we are selecting
+let populateInputs = (contact) => {
+  userInputFirstName.value = contact.name;
+  userInputLastName.value = contact.lastName;
+  userInputNumber.value = contact.number;
+  editingIndex = phoneBook.indexOf(contact);
+};
+
+//saving the edited contact in the array and also in the DOM
+let saveContact = (index, array) => {
+  array[index].name = userInputFirstName.value;
+  array[index].lastName = userInputLastName.value;
+  array[index].number = userInputNumber.value;
+  const cells = myTable
+    .querySelectorAll("tr")
+    [index + 1].querySelectorAll("td");
+  cells[0].innerText = userInputFirstName.value;
+  cells[1].innerText = userInputLastName.value;
+  cells[2].innerText = userInputNumber.value;
 };
 
 //function to create the rows with data cells
-let addCells = (table, name, lastName, number, array) => {
+let addContactRow = (table, name, lastName, number, array) => {
   if (
     name.length < 2 ||
     lastName.length < 2 ||
@@ -30,72 +56,48 @@ let addCells = (table, name, lastName, number, array) => {
   ) {
     alert("Wrong input");
   } else {
-    createObject(name, lastName, number, array);
+    createContact(name, lastName, number, array);
     //create new table row with data cells
     let newRow = table.insertRow(table.length);
-    let cellOne = newRow.insertCell(0);
-    let cellTwo = newRow.insertCell(1);
-    let cellThree = newRow.insertCell(2);
+    newRow.insertCell(0).innerHTML = name;
+    newRow.insertCell(1).innerHTML = lastName;
+    newRow.insertCell(2).innerHTML = number;
     let cellFour = newRow.insertCell(3);
 
     //add the inputs to the data cells and also buttons for every data cell
-    cellOne.innerHTML = name;
-    cellTwo.innerHTML = lastName;
-    cellThree.innerHTML = number;
     cellFour.innerHTML = `<button class="editBtn">Edit</button>`;
     cellFour.innerHTML += `<button class="deleteBtn">Delete</button>`;
-    //calling the button function
-    buttons(deleteButton, editButton, phoneBook, saveButton);
 
-    console.log(array);
-  }
-};
-
-//global variable, given a value later in the edit and save buttons
-let selectedRow = null;
-
-//function to add listeners on the buttons
-let buttons = (btnOne, btnTwo, array, btnThree) => {
-  //delete button
-  for (let i = 0; i < btnOne.length; i++) {
-    let button = btnOne[i];
-    button.addEventListener("click", function (event) {
-      event.target.parentElement.parentElement.remove();
-      let deletedElement = array.findIndex((element) => element == contact);
-      //first problem, if i have an array of more elements (4,5) and i either delete the first or second element it deletes my entire array
-      array.splice(deletedElement, 1);
+    //calling the functions with adding event listeners to the buttons
+    //edit button
+    cellFour.querySelector(".editBtn").addEventListener("click", () => {
+      populateInputs(contact);
+      console.log("Edit Button was clicked");
+    });
+    //delete button
+    cellFour.querySelector(".deleteBtn").addEventListener("click", () => {
+      newRow.remove();
+      const index = array.indexOf(contact);
+      array.splice(index, 1);
       console.log(array);
     });
   }
-  //edit button
-  for (let i = 0; i < btnTwo.length; i++) {
-    let edit = btnTwo[i];
-    edit.addEventListener("click", function (event) {
-      selectedRow = event.target.parentElement.parentElement;
-      (userInputFirstName.value = selectedRow.cells[0].innerHTML),
-        (userInputLastName.value = selectedRow.cells[1].innerHTML),
-        (userInputNumber.value = selectedRow.cells[2].innerHTML);
-    });
-  }
-  //save button if content edited
-  btnThree.addEventListener("click", function () {
-    selectedRow.cells[0].innerHTML = userInputFirstName.value;
-    selectedRow.cells[1].innerHTML = userInputLastName.value;
-    selectedRow.cells[2].innerHTML = userInputNumber.value;
-    //second problem, it creates multiple objects instead of just one in the array
-    createObject(
-      userInputFirstName.value,
-      userInputLastName.value,
-      userInputNumber.value,
-      phoneBook
-    );
-    console.log(phoneBook);
-  });
 };
+
+//save button and call the save contact button
+saveButton.addEventListener("click", () => {
+  if (editingIndex >= 0) {
+    saveContact(editingIndex, phoneBook);
+
+    editingIndex = null;
+    resetForm();
+  }
+  console.log(phoneBook);
+});
 
 //add button to call the function
 addButton.addEventListener("click", function () {
-  addCells(
+  addContactRow(
     myTable,
     userInputFirstName.value,
     userInputLastName.value,
